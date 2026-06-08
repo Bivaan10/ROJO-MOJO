@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROJO MOJO</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ENCRYPTION & DECYRPTION TOOL</h1>
+            <p>client-side AES-256 encryption + SHA-256 integrity check</p>
+        </header>
+        <div class="grid">
+            <section class="panel">
+                <div class="panel-inner">
+                    <h2>encryption</h2>
+                    <label for="encPlain">Plain Text Message</label>
+                    <textarea id="encPlain" placeholder="Enter the message you want to encrypt..."></textarea>
+                    <label for="encKey">Encryption Key</label>
+                    <div class="key-row">
+                        <input type="text" id="encKey" placeholder="Enter key or auto-generate">
+                        <button type="button" class="gen-btn" id="genKeyBtn">Generate</button>
+                    </div>
+                    <button class="btn" id="encryptBtn">Encrypt Message</button>
+                    <div class="output-block">
+                        <div class="output-head">
+                            <label for="encOutput">Ciphertext</label>
+                            <button class="copy-btn" data-target="encOutput">Copy</button>
+                        </div>
+                        <textarea id="encOutput" readonly placeholder="Ciphertext will appear here..."></textarea>
+                    </div>
+                    <div class="output-block">
+                        <div class="output-head">
+                            <label for="encHash">SHA-256 Hash</label>
+                            <button class="copy-btn" data-target="encHash">Copy</button>
+                        </div>
+                        <input type="text" id="encHash" readonly placeholder="Hash checksum will appear here...">
+                    </div>
+                    <div class="error-msg" id="encError"></div>
+                </div>
+            </section>
+            <section class="panel">
+                <div class="panel-inner">
+                    <h2>decryption</h2>
+                    <label for="decCipher">Encrypted Message</label>
+                    <textarea id="decCipher" placeholder="Paste the ciphertext here..."></textarea>
+                    <label for="decKey">Encryption Key</label>
+                    <input type="text" id="decKey" placeholder="Enter the key used during encryption">
+                    <button class="btn dec-btn" id="decryptBtn">Decrypt Message</button>
+                    <div class="output-block">
+                        <div class="output-head">
+                            <label for="decOutput">Decrypted Text</label>
+                            <button class="copy-btn" data-target="decOutput">Copy</button>
+                        </div>
+                        <textarea id="decOutput" readonly placeholder="Decrypted message will appear here..."></textarea>
+                    </div>
+                    <div class="output-block">
+                        <div class="output-head">
+                            <label for="decHash">SHA-256 Hash</label>
+                            <button class="copy-btn" data-target="decHash">Copy</button>
+                        </div>
+                        <input type="text" id="decHash" readonly placeholder="Compare with original hash...">
+                    </div>
+                    <div class="error-msg" id="decError"></div>
+                </div>
+            </section>
+        </div>
+       
+    </div>
+    <div id="toastBox"></div>
+    <script src="script.js"></script>
+</body>
+</html>
